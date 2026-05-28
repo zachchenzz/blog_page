@@ -1,61 +1,279 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Allison | Digital Space</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Zach Chen | Personal Blog</title>
+  <meta name="description" content="A modern personal blog about technology, IT support, productivity, and digital life." />
+
+  <meta property="og:title" content="Zach Chen | Personal Blog" />
+  <meta property="og:description" content="Thoughts on IT support, systems, technology, and better digital workflows." />
+  <meta property="og:type" content="website" />
+
+  <link rel="stylesheet" href="./assets/css/styles.css" />
 </head>
+
 <body>
+  <div class="page-glow"></div>
+
+  <header class="site-header">
     <nav class="navbar">
-        <div class="logo">A.</div>
-        <ul class="nav-links">
-            <li><a href="#work">Work</a></li>
-            <li><a href="#writing">Writing</a></li>
-            <li><a href="#about">About</a></li>
-        </ul>
+      <a href="#" class="brand">
+        <span class="brand-mark">Z</span>
+        <span>Zach Blog</span>
+      </a>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#posts">Posts</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span id="themeIcon">☾</span>
+        </button>
+      </div>
     </nav>
+  </header>
 
-    <header class="hero">
-        <h1>Hi, I'm Allison.</h1>
-        <p>I navigate the intersections of enterprise technology, digital strategy, and the aesthetics of everyday life.</p>
-    </header>
+  <main>
+    <!-- Hero -->
+    <section class="hero section" id="home">
+      <div class="hero-content">
+        <div class="eyebrow">Personal Blog · Tech Notes · Digital Life</div>
 
-    <main class="grid-container" id="writing">
-        <article class="card">
-            <div class="card-tag tech">Tech & Code</div>
-            <h2>Exploring the AI Landscape: My Journey with TensorFlow</h2>
-            <p>Notes on building sequential models, optimizing neural networks, and integrating Python into daily workflows.</p>
-            <a href="#" class="read-more">Read Entry →</a>
+        <h1>
+          Building better systems,
+          <span>one thoughtful note at a time.</span>
+        </h1>
+
+        <p class="hero-description">
+          Hi, I’m Zach — an IT support professional sharing ideas about troubleshooting,
+          automation, productivity, web experiments, and the human side of technology.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#posts" class="btn btn-primary">Read Latest Posts</a>
+          <a href="#about" class="btn btn-secondary">About Me</a>
+        </div>
+
+        <div class="hero-stats">
+          <div>
+            <strong>08+</strong>
+            <span>Topics</span>
+          </div>
+          <div>
+            <strong>24/7</strong>
+            <span>Curiosity</span>
+          </div>
+          <div>
+            <strong>100%</strong>
+            <span>Static & Fast</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="profile-card">
+          <div class="avatar-wrap">
+            <img src="./assets/images/avatar.svg" alt="Zach avatar" />
+          </div>
+          <h2>Zach Chen</h2>
+          <p>IT Support · Web Learner · Problem Solver</p>
+
+          <div class="profile-tags">
+            <span>IT Support</span>
+            <span>GitHub Pages</span>
+            <span>Automation</span>
+            <span>Frontend</span>
+          </div>
+        </div>
+
+        <div class="floating-card card-one">
+          <span>Current Focus</span>
+          <strong>Personal knowledge system</strong>
+        </div>
+
+        <div class="floating-card card-two">
+          <span>Latest Idea</span>
+          <strong>Make troubleshooting visual</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Posts -->
+    <section class="section" id="posts">
+      <div class="section-heading">
+        <p class="eyebrow">Latest Writing</p>
+        <h2>Featured Blog Posts</h2>
+        <p>
+          Replace these sample articles with your real posts. The layout is designed
+          to feel clean, premium, and easy to scan.
+        </p>
+      </div>
+
+      <div class="post-grid">
+        <article class="post-card featured">
+          <div class="post-meta">
+            <span>IT Notes</span>
+            <span>May 2026</span>
+          </div>
+          <h3>How I Think About Troubleshooting</h3>
+          <p>
+            A practical framework for diagnosing issues: observe, isolate, test,
+            document, and improve.
+          </p>
+          <a href="#" class="read-link">Read article →</a>
         </article>
 
-        <article class="card card-featured">
-            <div class="card-tag travel">Travel Diary</div>
-            <h2>Sunrise in Cappadocia</h2>
-            <p>Reflections on a multi-city journey across Turkey. From the bustling streets of Istanbul to the serene, balloon-filled skies of the central valleys.</p>
-            <a href="#" class="read-more">Read Entry →</a>
+        <article class="post-card">
+          <div class="post-meta">
+            <span>Web</span>
+            <span>Design</span>
+          </div>
+          <h3>Deploying My First Blog with GitHub Pages</h3>
+          <p>
+            Notes from building and publishing a fast static website using only
+            HTML, CSS, and JavaScript.
+          </p>
+          <a href="#" class="read-link">Read article →</a>
         </article>
 
-        <article class="card">
-            <div class="card-tag life">Life</div>
-            <h2>Feline Dynamics: Harmony at Home</h2>
-            <p>A practical guide to introductions, nutrition, and easing the transition when bringing a new kitten into a home with a resident adult cat.</p>
-            <a href="#" class="read-more">Read Entry →</a>
+        <article class="post-card">
+          <div class="post-meta">
+            <span>Productivity</span>
+            <span>Workflow</span>
+          </div>
+          <h3>Small Automations That Save Time</h3>
+          <p>
+            Simple habits and scripts that reduce repetitive work and make daily
+            support tasks smoother.
+          </p>
+          <a href="#" class="read-link">Read article →</a>
         </article>
-        
-        <article class="card">
-            <div class="card-tag tech">Infrastructure</div>
-            <h2>Streamlining Endpoint Management</h2>
-            <p>Lessons learned while configuring robust network architectures and deploying Microsoft Intune across enterprise environments.</p>
-            <a href="#" class="read-more">Read Entry →</a>
+
+        <article class="post-card">
+          <div class="post-meta">
+            <span>Career</span>
+            <span>Reflection</span>
+          </div>
+          <h3>What IT Support Teaches About People</h3>
+          <p>
+            Behind every ticket is a person trying to get work done. Good support
+            starts with empathy.
+          </p>
+          <a href="#" class="read-link">Read article →</a>
         </article>
-    </main>
+      </div>
+    </section>
 
-    <footer>
-        <p>© 2026 Allison. Crafted with intention.</p>
-    </footer>
+    <!-- About -->
+    <section class="section about-section" id="about">
+      <div class="about-panel">
+        <div>
+          <p class="eyebrow">About This Blog</p>
+          <h2>A digital notebook with a designer’s mindset.</h2>
+        </div>
 
-    <script src="script.js"></script>
+        <p>
+          This blog is a place to collect technical notes, problem-solving patterns,
+          learning progress, useful tools, and personal reflections. The visual style
+          combines glassmorphism, soft gradients, large spacing, and editorial typography
+          to make the site feel modern but still readable.
+        </p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <span>01</span>
+          <div>
+            <h3>Observe</h3>
+            <p>Capture problems, questions, and useful patterns from daily work.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <span>02</span>
+          <div>
+            <h3>Explain</h3>
+            <p>Turn complex technical topics into simple notes and visual ideas.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <span>03</span>
+          <div>
+            <h3>Improve</h3>
+            <p>Refine workflows, automate repetitive tasks, and keep learning.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section" id="projects">
+      <div class="section-heading">
+        <p class="eyebrow">Selected Projects</p>
+        <h2>Things I’m Building</h2>
+      </div>
+
+      <div class="project-grid">
+        <div class="project-card">
+          <div class="project-icon">⌘</div>
+          <h3>Support Knowledge Base</h3>
+          <p>A structured collection of common incidents, solutions, and escalation paths.</p>
+        </div>
+
+        <div class="project-card">
+          <div class="project-icon">◇</div>
+          <h3>Personal Blog System</h3>
+          <p>A lightweight static blog deployed with GitHub Pages and versioned by Git.</p>
+        </div>
+
+        <div class="project-card">
+          <div class="project-icon">✦</div>
+          <h3>Workflow Automation</h3>
+          <p>Small scripts and templates for repetitive technical support tasks.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter / Contact -->
+    <section class="section contact-section" id="contact">
+      <div class="contact-card">
+        <p class="eyebrow">Stay Connected</p>
+        <h2>Want to follow my notes?</h2>
+        <p>
+          Add your contact links here: GitHub, LinkedIn, email, or your portfolio.
+          Since this is a static site, the form below is visual only unless you connect
+          it to a form service later.
+        </p>
+
+        <form class="subscribe-form" onsubmit="return false;">
+          <input type="email" placeholder="your.email@example.com" aria-label="Email address" />
+          <button type="submit">Subscribe</button>
+        </form>
+
+        <div class="social-links">
+          <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="mailto:your.email@example.com">Email</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Zach Chen. Built with HTML, CSS, JavaScript, and GitHub Pages.</p>
+  </footer>
+
+  <script src="./assets/js/main.js"></script>
 </body>
 </html>
