@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Taco Plot Twist | Zach Blog</title>
+  <meta name="description" content="A funny personal blog post about discovering that Taco the cat is actually male, despite the original dream of having a female cat." />
+
+  <style>
+    :root {
+      --bg: #080b13;
+      --card: rgba(255, 255, 255, 0.08);
+      --card-strong: rgba(255, 255, 255, 0.13);
+      --text: #f8fafc;
+      --muted: #a7b0c0;
+      --line: rgba(255, 255, 255, 0.14);
+      --primary: #7c3aed;
+      --primary-2: #06b6d4;
+      --accent: #f97316;
+      --soft-pink: #fb7185;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 12%, rgba(251, 113, 133, 0.2), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(6, 182, 212, 0.22), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(124, 58, 237, 0.18), transparent 38%),
+        var(--bg);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, black, transparent 78%);
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(8, 11, 19, 0.72);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      width: min(980px, calc(100% - 36px));
+      height: 76px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      color: white;
+      background: linear-gradient(135deg, var(--soft-pink), var(--primary-2));
+      box-shadow: 0 14px 36px rgba(251, 113, 133, 0.25);
+    }
+
+    .back-link {
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: var(--text);
+      transform: translateX(-2px);
+    }
+
+    .page {
+      width: min(980px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 74px 0 56px;
+    }
+
+    .hero {
+      position: relative;
+      padding: 42px;
+      border: 1px solid var(--line);
+      border-radius: 36px;
+      background:
+        linear-gradient(135deg, rgba(251,113,133,0.16), rgba(6,182,212,0.11)),
+        var(--card);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "🐾";
+      position: absolute;
+      right: 34px;
+      bottom: -18px;
+      font-size: clamp(7rem, 16vw, 13rem);
+      opacity: 0.08;
+      transform: rotate(-14deg);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      color: #ffd1dc;
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--soft-pink), transparent);
+    }
+
+    h1 {
+      max-width: 820px;
+      font-size: clamp(2.8rem, 7vw, 5.9rem);
+      line-height: 0.96;
+      letter-spacing: -0.08em;
+      margin-bottom: 24px;
+    }
+
+    h1 span {
+      display: block;
+      background: linear-gradient(135deg, #fff, #ffd1dc, #9ddcff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.14rem;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .pill {
+      padding: 9px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.06);
+      font-size: 0.88rem;
+    }
+
+    .article-wrap {
+      display: grid;
+      grid-template-columns: 1fr 270px;
+      gap: 24px;
+      margin-top: 26px;
+      align-items: start;
+    }
+
+    article,
+    .side-card {
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: var(--card);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 56px rgba(0,0,0,0.16);
+    }
+
+    article {
+      padding: 38px;
+    }
+
+    article p {
+      margin: 0 0 22px;
+      color: rgba(248, 250, 252, 0.9);
+      font-size: 1.06rem;
+    }
+
+    article h2 {
+      margin: 42px 0 16px;
+      font-size: clamp(1.7rem, 4vw, 2.45rem);
+      line-height: 1.1;
+      letter-spacing: -0.06em;
+    }
+
+    .dropcap::first-letter {
+      float: left;
+      font-size: 4.6rem;
+      line-height: 0.82;
+      padding: 9px 10px 0 0;
+      font-weight: 900;
+      color: #ffd1dc;
+    }
+
+    blockquote {
+      margin: 32px 0;
+      padding: 24px;
+      border: 1px solid rgba(251, 113, 133, 0.34);
+      border-left: 5px solid var(--soft-pink);
+      border-radius: 22px;
+      background: rgba(251, 113, 133, 0.09);
+      color: #ffe4eb;
+      font-size: 1.18rem;
+      font-weight: 750;
+      letter-spacing: -0.02em;
+    }
+
+    .reality-check {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 30px 0;
+    }
+
+    .check-card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .check-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+      color: #ffffff;
+    }
+
+    .check-card span {
+      color: var(--muted);
+    }
+
+    .side-card {
+      position: sticky;
+      top: 98px;
+      padding: 24px;
+    }
+
+    .cat-badge {
+      width: 86px;
+      height: 86px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(251,113,133,0.28), rgba(6,182,212,0.2));
+      font-size: 2.4rem;
+    }
+
+    .side-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.35rem;
+      letter-spacing: -0.04em;
+    }
+
+    .side-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 10px;
+      list-style: none;
+    }
+
+    .mini-list li {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.05);
+      font-size: 0.92rem;
+    }
+
+    .ending-card {
+      margin-top: 34px;
+      padding: 28px;
+      border-radius: 26px;
+      background:
+        linear-gradient(135deg, rgba(124,58,237,0.18), rgba(6,182,212,0.13));
+      border: 1px solid var(--line);
+    }
+
+    .ending-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .footer {
+      padding: 34px 0 48px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    @media (max-width: 860px) {
+      .article-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .side-card {
+        position: static;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .nav,
+      .page {
+        width: min(100% - 28px, 980px);
+      }
+
+      .hero,
+      article {
+        padding: 26px;
+        border-radius: 28px;
+      }
+
+      .reality-check {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">Z</span>
+        <span>Zach Blog</span>
+      </a>
+      <a class="back-link" href="../index.html">← Back to Home</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">Funny Life Note</p>
+      <h1>The Taco Plot Twist <span>I Did Not Order</span></h1>
+      <p class="subtitle">
+        A tiny domestic comedy about expectations, reality, and the moment I discovered
+        that Taco was not the elegant little lady I imagined — but a confident little gentleman.
+      </p>
+      <div class="meta-row">
+        <span class="pill">Personal Story</span>
+        <span class="pill">Cat Comedy</span>
+        <span class="pill">Expectation vs Reality</span>
+      </div>
+    </section>
+
+    <div class="article-wrap">
+      <article>
+        <p class="dropcap">
+          When I first imagined having a cat, the picture in my mind was very clear:
+          a sweet female cat, graceful like a tiny princess, calm like a cup of warm tea,
+          and maybe just a little dramatic in the most adorable way. I had already built
+          a whole personality for her before she even officially entered my life.
+        </p>
+
+        <p>
+          And then came Taco.
+        </p>
+
+        <p>
+          The name was perfect. Cute, round, funny, and slightly chaotic. Taco sounded like
+          the kind of cat who would sit near the window with mysterious elegance, judge the
+          birds outside, and then politely accept compliments as if they were daily rent.
+          In my head, Taco was already a girl. Not because Taco said anything, of course —
+          cats are famously terrible at completing identity forms — but because my imagination
+          had confidently submitted the paperwork on Taco’s behalf.
+        </p>
+
+        <h2>The Dream: A Little Queen at Home</h2>
+
+        <p>
+          I thought I was preparing for a female cat. I imagined gentle moments, soft poses,
+          and the kind of delicate personality that would make every photo look like a lifestyle
+          magazine cover. I pictured myself saying, “She is so cute,” with the calm certainty
+          of someone who believes the universe has followed the plan exactly.
+        </p>
+
+        <p>
+          There was a whole emotional design already built around this idea. Taco would be
+          the little queen of the house. I would be the loyal human assistant. She would decide
+          where to sleep, when to be touched, and which expensive toy to ignore. Everything made
+          sense. The story was smooth. The theme was consistent. The branding was complete.
+        </p>
+
+        <blockquote>
+          My expectation: “Welcome home, little princess.”<br />
+          Reality: “Actually, sir, your princess has been a prince this whole time.”
+        </blockquote>
+
+        <h2>The Reveal: Wait... Taco Is Male?</h2>
+
+        <p>
+          Then came the unexpected discovery: Taco is male.
+        </p>
+
+        <p>
+          For a second, my brain needed to restart like an old computer after a system update.
+          The information was simple, but the emotional impact was surprisingly funny. It was
+          not bad news at all — just a plot twist. The kind of plot twist where the background
+          music suddenly stops and everyone in the room looks at the camera.
+        </p>
+
+        <p>
+          I had not just misunderstood a detail. I had accidentally written a full character
+          biography for the wrong gender. Taco had been peacefully living his life while I was
+          busy assigning him a princess role in my imaginary family drama.
+        </p>
+
+        <div class="reality-check">
+          <div class="check-card">
+            <strong>What I wanted</strong>
+            <span>A gentle little female cat with princess energy.</span>
+          </div>
+          <div class="check-card">
+            <strong>What I got</strong>
+            <span>Taco: a male cat with main-character energy.</span>
+          </div>
+        </div>
+
+        <h2>The Conflict: Desire vs Reality</h2>
+
+        <p>
+          The funniest part was not that Taco was male. The funniest part was the conflict
+          between what I had expected and what was actually true. My desire had been very specific:
+          I wanted a female cat. Reality answered politely but firmly: “Here is Taco. He is male.
+          Please update your emotional database.”
+        </p>
+
+        <p>
+          And honestly, reality won immediately. Because Taco did not become less cute. He did
+          not become less special. He simply forced me to redesign the story. The princess became
+          a prince. The queen became a young gentleman. The soft elegant fantasy became a comedy
+          with paws, whiskers, and excellent timing.
+        </p>
+
+        <p>
+          It reminded me that sometimes we are attached not only to what we have, but to the
+          version of it we expected. Then real life walks in, knocks a cup off the table, and says,
+          “Actually, let me introduce myself properly.”
+        </p>
+
+        <h2>New Title, Same Taco</h2>
+
+        <p>
+          So now Taco has a new official identity in my mind. He is no longer the imaginary little
+          lady I expected. He is Taco, the unexpected gentleman. The plot twist cat. The tiny CEO
+          of surprise. The male cat who casually destroyed my original plan and somehow made the
+          story better.
+        </p>
+
+        <p>
+          Maybe I wanted a female cat, but I met Taco. And Taco, being Taco, did not ask for my
+          expectations. He simply arrived as himself.
+        </p>
+
+        <div class="ending-card">
+          <p>
+            In the end, the conflict between desire and reality became the best part of the story.
+            I expected a princess. I got a prince. But more importantly, I got Taco.
+          </p>
+          <p>
+            And honestly? That is a pretty good deal.
+          </p>
+        </div>
+      </article>
+
+      <aside class="side-card">
+        <div class="cat-badge">🐱</div>
+        <h3>Taco Profile</h3>
+        <p>The official correction notice for my imagination.</p>
+        <ul class="mini-list">
+          <li><strong>Name:</strong> Taco</li>
+          <li><strong>Expected role:</strong> Little princess</li>
+          <li><strong>Actual role:</strong> Plot twist gentleman</li>
+          <li><strong>Status:</strong> Still extremely cute</li>
+        </ul>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Zach Chen. A small story about Taco, expectations, and reality.</p>
+  </footer>
+</body>
+</html>
